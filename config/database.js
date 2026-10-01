@@ -2,6 +2,7 @@ import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { mkdirSync } from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -12,6 +13,7 @@ let db = null;
 
 export async function getDatabase() {
   if (!db) {
+    mkdirSync(dirname(dbPath), { recursive: true });
     db = await open({
       filename: dbPath,
       driver: sqlite3.Database

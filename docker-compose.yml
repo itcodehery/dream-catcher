@@ -1,0 +1,22 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dream-catcher
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3001}:3001"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - DATABASE_PATH=/app/data/dreams.db
+    volumes:
+      - dream-catcher-data:/app/data
+
+volumes:
+  dream-catcher-data:
+    name: dream-catcher-data

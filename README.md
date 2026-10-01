@@ -59,7 +59,22 @@ PORT=3000
 
 Get your API key from: https://console.anthropic.com/
 
-### 3. Run the Application
+### 3. Run with Docker (Recommended)
+
+Start the containerized application using Docker Compose:
+
+```bash
+docker compose up -d --build
+```
+
+The database is persisted in the `dream-catcher-data` Docker volume.
+
+To stop the container:
+```bash
+docker compose down
+```
+
+### 4. Run Locally
 
 Development mode (with auto-restart):
 ```bash
@@ -71,7 +86,7 @@ Production mode:
 npm start
 ```
 
-The app will be available at `http://localhost:3000`
+The app will be available at `http://localhost:3001`
 
 ## API Endpoints
 
